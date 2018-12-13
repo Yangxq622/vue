@@ -1,0 +1,33 @@
+<div class="header-box">
+    <header>
+        <div class="header-top">
+            <div class="header-container">
+                <div class="header-container-left">
+                    <i class="iconfont icon-tubiao210"></i>
+                    <p>24小时免费热线：0715-999-999</p>
+                </div>
+                <div class="header-containder-right">
+                    <form id="search" @submit.prevent="sea">
+                        <input type="text" name="search" class="key" v-model="this.searchKey">
+                        <input type="submit" value="搜索" class="se">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="header-bottom">
+            <div class="header-bottom-con">
+                <span>{{this.searchKey}}</span>
+                <h1 class="animated bounceInDown">YANG</h1>
+                <ul>
+                    <li>
+                        <router-link activeClass="active" v-for="item in navList" :to="{name:item.name}" class="animated bounceInDown">{{item.title}}</router-link>
+                    </li>
+                </ul>
+                <div class="header-user">
+                    <p v-if="isLogin!=0">欢迎<span>{{isLogin}}</span> | <span @click="clear">退出登陆</span></p>
+                    <p v-else><a href="#/register">请先登录</a></p>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>

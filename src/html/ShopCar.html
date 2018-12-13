@@ -1,0 +1,51 @@
+<div class="box">
+    <Header />
+    <div class="title">
+        <h2>首页 / 购物车页</h2>
+    </div>
+    <img class="tip-img" v-if="!isLogin || carList.length == 0" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1542000380597&di=35301bd8ca25609c5aec5ab5fe1397ae&imgtype=0&src=http%3A%2F%2Fwww.xp85.com%2Fuploadfile%2F2016%2F1013%2F20161013115218649.gif">
+    <h2 v-if="carList.length == 0 && isLogin" class="tip">您的购物车太空啦！快去丰富它吧</h2>
+    <h2 v-if="!isLogin" class="tip">您还没有登录!请先去登录</h2>
+    <span v-if="isLogin&& carList.length == 0" class="go" @click="shopping">去购物</span>
+    <span v-if="!isLogin" class="go" @click="log">去登录</span>
+    <div class="con" v-if="carList.length != 0 && isLogin">
+        <ul class="th">
+            <li class="li1">
+                <label>
+                    <input type="checkbox" v-model="this.isAllActive" @change="changeCheck">全选
+                </label>
+            </li>
+            <li class="li2">商品图片</li>
+            <li class="li3">商品名称</li>
+            <li class="li4">商品数量</li>
+            <li class="li5">商品价格</li>
+            <li class="li5">价格小计</li>
+            <li class="li5">操作</li>
+        </ul>
+        <ul class="tbody" ref="list">
+            <li v-for="(item,index) in carList">
+                <input type="checkbox" class="check" @change="check_one(index)" v-model="item.isActive">
+                <img :src="item.img">
+                <span class="name">{{item.name}}</span>
+                <div class="num">
+                    <span @click="change(false,index)" v-show="item.number>1">-</span>
+                    <input type="text" v-model.number="item.number" @change="changeByInput(index,item.number)">
+                    <span @click="change(true,index)">+</span>
+                </div>
+                <span class="price">{{item.price}}</span>
+                <span class="sum">{{item.number * item.price}}</span>
+                <i @click="del(item.goodsID,index)" class="iconfont icon-icon"></i>
+            </li>
+        </ul>
+        <div class="des">
+            <label v-show="control">
+                <input type="checkbox" v-model="this.deleteAll" @change="delByCheck">批量删除
+            </label>
+            <p>总价<span>{{sum | nu}}</span>元</p>
+            <p>已件选商品<span>{{trueC}}</span></p>
+            <p>共<span>{{count}}</span>件商品</p>
+        </div>
+        <h2 @click="payFor" class="end">结算</h2>
+    </div>
+    <Footer />
+</div>

@@ -1,0 +1,48 @@
+<div class="box">
+  <Header />
+  <div class="info">
+    <div class="dress">
+      <span>收货地址</span>
+      <el-cascader size="large" :options="options" v-model="this.selectedOptions" @change="handleChange">
+      </el-cascader>
+    </div>
+    <div class="per">
+      <span>收货人</span>
+      <input type="text" v-model="this.nameInfo" @input="changeName(this.nameInfo)" v-if="show">
+      <p v-else>{{this.nameInfo}}</p>
+    </div>
+    <div class="det">
+      <span>详细地址</span>
+      <textarea v-model="this.nameAdress" @input="changeDet(this.nameAdress)" v-if="show"></textarea>
+      <p v-else>{{this.nameAdress}}</p>
+    </div>
+    <div class="phone">
+      <span>收货电话</span>
+      <input type="text" v-model="this.nameTel" @input="changeTel(this.nameTel)" v-if="show">
+      <p v-else>{{this.nameTel}}</p>
+    </div>
+    <span class="info" @click="save">保存信息</span>
+    <span class="info" @click="add">新增信息</span>
+  </div>
+  <div class="bus">
+    <ul class="head">
+      <li class="li1">商品图片</li>
+      <li class="li2">商品名称</li>
+      <li class="li3">商品数量</li>
+      <li class="li3">商品单价</li>
+      <li class="li3">商品小计</li>
+    </ul>
+    <ul class="con">
+      <router-link tag="li" v-for="item in payList" to="/pay">
+        <img :src="item.img">
+        <span class="newname">{{item.name}}</span>
+        <span class="oth">{{item.number}}</span>
+        <span class="oth">{{item.price}}</span>
+        <span class="oth">¥{{count | val}}</span>
+      </router-link>
+    </ul>
+    <span class="com">共计¥{{sum | val}}</span>
+    <span class="pay" @click="pay">确认支付</span>
+  </div>
+  <Footer />
+</div>

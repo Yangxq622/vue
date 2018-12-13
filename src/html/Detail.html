@@ -1,0 +1,53 @@
+<div class="box">
+    <Header />
+    <div class="title">
+        <h2>首页 / 商品列表 / 商品详情</h2>
+    </div>
+    <div class="con">
+        <div class="goods">
+            <div class="goods-top">
+                <div class="goods-top-left">
+                    <div class="middle-img">
+                        <img :src="showImgSrc">
+                    </div>
+                    <div v-for="(item,index) in banner" class="small-img" @mouseover="show(index)">
+                        <img :src="item">
+                    </div>
+                </div>
+                <div class="goods-top-right">
+                    <p class="name">{{goodsDetail.name}}</p>
+                    <p class="discount">活动期间，该商品<span>{{goodsDetail.discount}}</span>折</p>
+                    <span class="yj">原价¥{{goodsDetail.price/goodsDetail.discount*10 | num}}</span>
+                    <span class="price">¥{{goodsDetail.price}}</span>
+                    <p class="detail">{{goodsDetail.detail}}</p>
+                    <span class="add" @click="add(goodsDetail._id,1)">加入购物车</span>
+                    <span class="buy" @click="buy(goodsDetail._id,1)">立即购买</span>
+                    <el-badge :value="this.commentListLength" :max="99" class="item">
+                        <el-button size="small" @click="find">查看评价</el-button>
+                    </el-badge>
+                    <el-badge class="item">
+                        <el-button size="small" @click="assess">添加评价</el-button>
+                    </el-badge>
+                    <div class="gradeBox" v-show="writeT">
+                        <el-rate v-model="this.grade" show-text class="grade1" allow-half ></el-rate>
+                        <input type="text" placeholder="请输入您对该商品的评价" v-model="this.text">
+                        <button @click="closeWrite(goodsDetail._id,this.grade,this.text)">确定</button>
+                        <button @click="closeBox">关闭</button>
+                    </div>
+                </div>
+            </div>
+            <div v-if="this.commentList" class="commentBox">
+                <button @click="closeCommentList">关闭</button>
+                <div class="commentList" v-for="item in this.commentList">
+                    <div class="level">
+                        <el-rate v-model="item.level" disabled show-score text-color="#00f" score-template="{value}"></el-rate>
+                    </div>
+                    <div class="content">
+                        <span class="de">评价内容</span><span class="con">{{item.content}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <Footer />
+</div>

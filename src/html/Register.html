@@ -1,0 +1,33 @@
+<div>
+    <Header />
+    <div class="log-title">
+        <h2>首页 / 登录</h2>
+   </div>
+   <div class="log-con">
+       <div class="log-con-left">
+           <h2>欢迎登录</h2>
+           <h4>欢迎来到你的登录页</h4>
+           <form @submit.prevent="log">
+                <p>用户名</p>
+                <input type="text" placeholder="请输入您的用户名" name="username" class="in" v-model="loginfo.username">
+                <p>用户密码</p> <span :class="[act.code == 200 ? 'color' : '']">{{act.text}}</span>
+                <input type="password" placeholder="请输入您的登录密码" name="password" class="in" v-model="loginfo.password">
+                <input type="submit" value="登录" class="out">
+           </form> 
+       </div>
+       <div class="log-con-right">
+           <h2>注册页</h2>
+           <h4>您的注册私人信息</h4>
+           <form @submit.prevent="reg">
+               <p>*用户名</p>
+               <input type="text" placeholder="请输入您的用户名，为3-10位数字或字母" required class="lo-in" v-model="reginfo.username">
+               <p>*密码</p>
+               <input type="password" placeholder="请输入您的密码,为6-12位数字或字母" required class="lo-in" v-model="reginfo.password">
+               <p>*确认密码</p><span :class="[sta.code == 200 ? 'color' : '']">{{sta.text}}</span>
+               <input type="password" placeholder="请确认您的密码" required class="lo-in" v-model="reginfo.password1">
+               <input type="submit" class="lo-out" value="注册">
+           </form>
+       </div>
+   </div>
+   <Footer />
+</div>

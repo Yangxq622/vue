@@ -1,0 +1,70 @@
+*{margin: 0;padding: 0;list-style: none;text-decoration: none;color: #333;}
+body,html{width: 100%;height: 100%;}
+.header-box{
+    width: 100%;height: 100%;
+    header{
+        width: 100%;height: 100%;
+        .header-top{
+            width: 100%;background:#333;padding-top:11px;padding-bottom:11px;
+            .header-container{
+                width: 1200px;height: 33px;margin: 0 auto;overflow: hidden;
+                .header-container-left{
+                    float: left;width: 70%;height: 33px;overflow: hidden;
+                    i{
+                        display: block;width: 25px;height: 25px;background: #fff;margin-top: 4px;margin-left: 4px;
+                        float: left;border-radius: 50%;text-align: center;line-height: 25px;
+                    }
+                    p{
+                        float: left;line-height: 33px;color: #fff;margin-left: 15px;font-style: italic;
+                    }
+                }
+                .header-containder-right{
+                    float: left;width: 20%;margin-left:40px;
+                    #search{
+                        height: 33px;overflow: hidden;border-radius: 10px;
+                        .key{
+                            width: 200px;height: 33px;background: #eee;border: none;float: left;
+                        }
+                        .se{
+                            float: left;display: block;height: 33px;width: 40px;
+                            background: rgb(207, 195, 195);border: none;border-left: 1px solid gray;
+                        }
+                    }
+                }
+            }
+        }
+        .header-bottom{
+            width: 100%;height: 70px;background: #fff;border-bottom:1px solid gray;
+            .header-bottom-con{
+                width: 1200px;margin: 0 auto;overflow: hidden;
+                h1{
+                    float: left;width: 300px;line-height: 70px;
+                }
+                ul{
+                    float: left;width: 600px;
+                    a{
+                        width: 25%;line-height: 70px;float: left;display:block;
+                        &.active{
+                            font-weight: bold;color: rgb(245, 111, 145);
+                        }
+                        &:hover{
+                            color: rgb(128, 175, 228)
+                        }
+                    }
+                }
+                .header-user{
+                    float: left;
+                    p{
+                        line-height: 60px;padding-left:10px;
+                        a{
+                            color:rgb(112, 104, 226);
+                        }
+                        span{
+                            line-height: 60px;font-weight: bold;color: rgb(229, 153, 153);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

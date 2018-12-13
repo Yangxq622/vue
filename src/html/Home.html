@@ -1,0 +1,93 @@
+<div class="box">
+    <Header />
+    <div class="con-box">
+        <div class="img" @click="change">
+            <el-carousel height="400px">
+                <el-carousel-item v-for="item in this.banner" :key="item">
+                    <img :src="item" draggable="false">
+                </el-carousel-item>
+            </el-carousel>
+        </div>
+        <!-- 商城宣传 -->
+        <ul class="merit">
+            <li>
+                <div><i class="iconfont icon-qiche"></i></div>
+                <span>全场免运费</span>
+                <p>在YANG商城购物，全场免运费，完善您的购物体验</p>
+            </li>
+            <li>
+                <div> <i class="iconfont icon-yinxingqia"></i></div>
+                <span>7天免费退换</span>
+                <p>在本商城购买的商品，7天内可免费退换</p>
+            </li>
+            <li>
+                <div> <i class="iconfont icon-icon-test"></i></div>
+                <span>津贴翻倍</span>
+                <p>商城店铺均有优惠活动，商城会员日当天，优惠力度翻倍</p>
+            </li>
+            <li>
+                <div> <i class="iconfont icon-dianhua"></i></div>
+                <span>24小时客服在线</span>
+                <p>商城客服24小时,及时解决您的疑惑</p>
+            </li>
+        </ul>
+        <!-- 热门商品展示 -->
+        <ul class="hot">
+            <router-link tag="li" v-for="item in hotList" :to="{name:'d',params:{goodsID:item._id}}">
+                <div>
+                    <img :src="item.banner">
+                    <i @click="det($event,item._id)" class="iconfont icon-gouwuchekong"></i>
+                </div>
+            </router-link>
+        </ul>
+        <h2>主打商品</h2>
+        <ul class="goods">
+            <router-link tag="li" v-for="(item,index) in goodsList" :to="{name:'d',params:{goodsID:item._id}}">
+                <img :src="item.img">
+                <!-- 原始显示 -->
+                <div class="old">
+                    <span class="oldName">{{item.name}}</span>
+                    <span class="oldPrice">¥{{item.price}}</span>
+                </div>
+                <el-button type="text" @click="addGoods($event,item._id)" class="new">加入购物车</el-button>
+            </router-link>
+        </ul>
+        <div class="more">
+            <span @click="change">前往更多<i class="iconfont icon-jiantou"></i></span>
+        </div>
+        <!--部分介绍-->
+        <div class="intro">
+            <h3>商城活动</h3>
+            <ul>
+                <li>
+                    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1542443442&di=8debae66b3074868a75a73eefdea9647&imgtype=jpg&er=1&src=http%3A%2F%2Fwww.pptbz.com%2Fppt%2FUploadSoftPic%2F201503%2F2015030312284272.jpg">
+                    <h4>活动介绍</h4>
+                    <h6>活动时间11/10-11/20</h6>
+                    <p>
+                        活动期间连续签到，将会获得对应的礼包，每天登陆都将有机会获得1111大红包，分享好友
+                        将会有更多机会，每天有3次获取机会
+                    </p>
+                </li>
+                <li>
+                    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1542443442&di=8debae66b3074868a75a73eefdea9647&imgtype=jpg&er=1&src=http%3A%2F%2Fwww.pptbz.com%2Fppt%2FUploadSoftPic%2F201503%2F2015030312284272.jpg">
+                    <h4>活动介绍</h4>
+                    <h6>活动时间11/10-11/20</h6>
+                    <p>
+                        活动期间连续签到，将会获得对应的礼包，每天登陆都将有机会获得1111大红包，分享好友
+                        将会有更多机会，每天有3次获取机会
+                    </p>
+                </li>
+                <li>
+                    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1542443442&di=8debae66b3074868a75a73eefdea9647&imgtype=jpg&er=1&src=http%3A%2F%2Fwww.pptbz.com%2Fppt%2FUploadSoftPic%2F201503%2F2015030312284272.jpg">
+                    <h4>活动介绍</h4>
+                    <h6>活动时间11/10-11/20</h6>
+                    <p>
+                        活动期间连续签到，将会获得对应的礼包，每天登陆都将有机会获得1111大红包，分享好友
+                        将会有更多机会，每天有3次获取机会
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <Footer />
+</div>

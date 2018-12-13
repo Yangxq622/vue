@@ -1,0 +1,61 @@
+<div class="box">
+    <Header />
+    <div class="title">
+        <h2>首页 / 商品列表</h2>
+    </div>
+    <div class="con">
+        <div class="con-left">
+            <h3>分类</h3>
+            <ul>
+                <li @click="all">显示全部</li>
+                <li @click="cs">衬衫</li>
+                <li @click="xz">西装</li>
+                <li @click="tx">T恤</li>
+                <li @click="lf">礼服</li>
+                <li @click="xf">西服</li>
+                <li @click="xk">西裤</li>
+            </ul>
+        </div>
+        <div class="con-right">
+            <div class="sort">
+                <span>排序依据</span>
+                <select @change="changeSort" ref="name">
+                    <option value="de">不排序</option>
+                    <option value="t">按类型排序</option>
+                    <option value="p-1">价格降序</option>
+                    <option value="p1">价格升序</option>
+                    <option value="d-1">折扣降序</option>
+                    <option value="d1">折扣升序</option>
+                </select>
+            </div>
+            <div class="wat">
+                <i @click="row" class="iconfont icon-tubiao_liebiaopailie"></i>
+                <i @click="col" class="iconfont icon-pailie"></i>
+            </div>
+            <div class="list">
+                <ul>
+                    <router-link :class="view" v-for="item in defaultList" tag="li" :to="{name:'d',params:{goodsID:item._id}}">
+                        <img :src="item.img">
+                        <span class="name">{{item.name}}</span>
+                        <span class="price">¥{{item.price}}</span>
+                        <span class="price">{{item.discount}}折</span>
+                        <span class="buy" @click="add($event,item._id)">加入购物车</span>
+                        <span class="buy" @click="buy($event,item._id)">立即购买</span>
+                    </router-link>
+                </ul>
+            </div>
+            <div class="page">
+                <a href="javascript:;"  @click=changePage(1)>首页</a>
+                <a href="javascript:;" @click="prev" :class="prevClass">上一页</a>
+                <div ref="page">
+                    <router-link v-for="(count,index) in countPage" :key="index" to="/list" @click.native="changePage(count)"
+                        :class="{'active':index==isActive}">{{count}}
+                    </router-link>
+                </div>
+                <a href="javascript:;" @click="next" :class="nextClass">下一页</a>
+                <a href="javascript:;" @click="changePage(countPage)">尾页</a>
+            </div>
+        </div>
+    </div>
+    <Footer />
+</div>
